@@ -41,4 +41,4 @@ http://stackoverflow.com/questions/359424/detach-subdirectory-into-separate-git-
 
 You need to clone the github repos in bare mode like this:
 
-    git clone --bare git@github.com:carpe-noctem-cassel/alica.git alica.git
+    git clone --bare git@github.com:<user>/<repo_name>.git <repo_name>.git
