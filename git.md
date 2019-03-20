@@ -23,11 +23,11 @@ To check if it worked. You should see an entry like "remotes/origin/<your_branch
 
 ### Delete local branch
 
-    git branch -d name_of_branch
+    git branch -d <your_branch_name>
 
 ### Delete branch on server
 
-    git push origin --delete name_of_branch
+    git push origin --delete <your_branch_name>
 
 ### Update list of remote branches
 
