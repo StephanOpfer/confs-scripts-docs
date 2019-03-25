@@ -39,8 +39,4 @@ Wir sollten nicht alle Komponenten selbst schreiben, damit wir das Rad nicht kom
 
 ### Installation of Cap'n'Proto:
 
-   sudo apt-get install capnproto libcapnp-dev
-
-
-
-
+    sudo apt-get install capnproto libcapnp-dev
