@@ -14,13 +14,13 @@ Wir sollten nicht alle Komponenten selbst schreiben, damit wir das Rad nicht kom
 
 ## Serialization/Deserialization
 
-  * In diesem [[https://capnproto.org/news/2014-06-17-capnproto-flatbuffers-sbe.html|Blog-Eintrag]] wurden einige mögliche Lösungen verglichen: Protobuf, **Cap'n Proto**, SBE und FlatBuffers
+  * In diesem [Blog-Eintrag](https://capnproto.org/news/2014-06-17-capnproto-flatbuffers-sbe.html) wurden einige mögliche Lösungen verglichen: Protobuf, **Cap'n Proto**, SBE und FlatBuffers
 
 ## Transport
 
-  * Mögliche Lösung [[http://zeromq.org/|ZeroMQ]].
-  * **UDP Multicast Support** gibt es erst seit 2016. Hier ist ein [[https://github.com/zeromq/libzmq/blob/master/tests/test_radio_dish.cpp|Test auf Github]], der entsprechende Funktionalität zeigt. Hier die soweit [[https://github.com/zeromq/libzmq/blob/master/doc/zmq_udp.txt|umfangreichste Doku]] zum Thema.
-  * Das CERN hat [[http://zeromq.wdfiles.com/local--files/intro%3Aread-the-manual/Middleware%20Trends%20and%20Market%20Leaders%202011.pdf|einen Artikel]] veröffentlicht, welches verschiedene Middlewares vergleicht: ZeroMQ gewinnt...
+  * Mögliche Lösung [ZeroMQ](http://zeromq.org/).
+  * **UDP Multicast Support** gibt es erst seit 2016. Hier ist ein [Test auf Github](https://github.com/zeromq/libzmq/blob/master/tests/test_radio_dish.cpp), der entsprechende Funktionalität zeigt. Hier die soweit [umfangreichste Doku](https://github.com/zeromq/libzmq/blob/master/doc/zmq_udp.txt) zum Thema.
+  * Das CERN hat [einen Artikel](http://zeromq.wdfiles.com/local--files/intro%3Aread-the-manual/Middleware%20Trends%20and%20Market%20Leaders%202011.pdf) veröffentlicht, welches verschiedene Middlewares vergleicht: ZeroMQ gewinnt...
   * Es wäre wichtig, das die Transportkomponente auch **lokal** Daten zwischen Prozessen verschicken kann. Am effizientesten ist dabei **shared memory** basierte Kommunikation.
 
 ## Sketch
@@ -37,6 +37,6 @@ Wir sollten nicht alle Komponenten selbst schreiben, damit wir das Rad nicht kom
     wget https://download.opensuse.org/repositories/network:/messaging:/zeromq:/git-draft/xUbuntu_18.04/Release.key -O- | sudo apt-key add
     sudo apt install libzmq3-dev
 
-### Installation of Cap'n'Proto:
+### Installation of Cap'n'Proto
 
     sudo apt-get install capnproto libcapnp-dev
