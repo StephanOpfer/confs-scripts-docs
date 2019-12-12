@@ -33,12 +33,12 @@ To check if it worked. You should see an entry like "remotes/origin/<your_branch
 
     git remote update origin --prune
 
-## Revoke last commit locally
+### Revoke last commit locally
 
     git reset --soft HEAD~1
     git reset --hard HEAD~1
 
-## Revoke last commit from server
+### Revoke last commit from server
 
     git push origin +HEAD
 
