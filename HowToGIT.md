@@ -33,6 +33,15 @@ To check if it worked. You should see an entry like "remotes/origin/<your_branch
 
     git remote update origin --prune
 
+## Revoke last commit locally
+
+    git reset --soft HEAD~1
+    git reset --hard HEAD~1
+
+## Revoke last commit from server
+
+    git push origin +HEAD
+
 ## HowTo create an extra GIT from a subfolder of an existing GIT
 
 http://stackoverflow.com/questions/359424/detach-subdirectory-into-separate-git-repository/17864475#17864475
