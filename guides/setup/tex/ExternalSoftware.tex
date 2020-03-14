@@ -1,0 +1,49 @@
+\chapter{External Software and Developing Tools}
+\label{chap:ExtSoftware}
+
+This chapter is intended to give a short introduction to external software packages or frameworks, we utilise for the Carpe Noctem Cassel software framework.
+
+\section{GIT and GitHub}
+\label{sec:Git}
+
+GIT is one of the most advanced version control systems currently available. Nevertheless, during our daily work we only use 20\% of its functionality. So for starters try to learn the stuff you need and ignore its advanced features like \emph{rebase} and \emph{cherry pick}.
+
+The best reference and documentation about GIT can be found at \url{http://www.git-scm.com/docs}
+
+Most of our software is published open source under the MIT License at our \href{https://github.com/dasys-lab}{GitHub Repositories}. Therefore, it is also interesting to read about the features of GitHub, like SSH-Key based authorization, groups, organisations, and MarkDown.
+
+The README.md files in our repositories are written in \href{https://en.wikipedia.org/wiki/Markdown}{MarkDown}, because GitHub parses these MarkDown files and auto-generates an HTML documentation from it.
+
+A list of GIT commands, that should be enough for the start, can be found on \href{https://www.git-tower.com/blog/git-cheat-sheet/}{git-tower.com}.
+
+\section{Robot Operating System (ROS)}
+\label{sec:ROS}
+
+ROS, as we use it, is a simple inter process communication middleware. Before you ask, yes it is not intended to be used for inter machine/robot communication. Therefore, we have developed a simple ROSUdpProxy, for our purposes. 
+
+Tutorials for ROS can be found here: \url{http://wiki.ros.org/ROS/Tutorials}
+
+After following this tutorial you should be able to explain a bunch of things:
+
+\begin{description}
+  \item [Topics:] How do they work?
+  \item [Nodes:] What is a ROS node?
+  \item [roscore:] What is its job?
+  \item [package.xml:] build\_depend, run\_depend, licences, ...
+  \item [CMakeLists.txt:] What are the critical ROS specific macros and how do they work? (not very well explained in the tutorial)
+  \item [Console Commands:] rosrun, rospack, roscd, rosls, roslaunch, rostopic, rosnode
+  \item [catkin\_make:] How to compile a workspace/a package? \textcolor{red}{DON'T USE 'catkin\_make'! USE 'catkin build' INSTEAD!}
+  \item [ROS-Workspace:] What is its structure and why is it structured that way?
+  \item [ROS-Services:] How are they defined, compiled/generated, and how do they work?
+  \item [ROS-Messages:] How are they defined and compiled/generated?
+  \item [roscpp API:] How to create a publisher and a subscriber?
+\end{description}
+
+\section{Build Chain}
+\label{sec:BuildChain}
+
+We utilise \emph{catkin} from the ROS Universe as our build chain. Catkin is basically a workspace-oriented extension of \href{http://www.cmake.org/}{CMake}. Therefore, it heavily relies on CMake and in order to understand catkin it is recommended to understand CMake first.
+
+CMake is open source and developed by \href{http://www.kitware.com/company/about.html}{KitWare}. Basically CMake autogenerates Makefiles out of CMakeLists.txt files located in each software module. Therefore, our build chain can really be considered as a chain \smiley: 
+
+Catkin $\xrightarrow{manages}$ CMake $\xrightarrow{auto-generates}$ Makefiles $\xrightarrow{commands}$ GCC $\xrightarrow{to\ compile}$ executables and libraries.
