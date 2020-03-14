@@ -1,0 +1,2 @@
+[DEFAULT]
+branch = git branch "$@"
