@@ -36,8 +36,8 @@ The development environment recommended to develop software in this book is the 
   \verb#sudo apt upgrade#
 	\item[2. Install Ubuntu - Extra Packages] Simply install the package with the following command: \verb#sudo apt install g++ make binutils cmake libssl-dev#\\
 	\verb#libboost-system-dev vim git ssh myrepos capnproto#\\
-	\verb#libcapnp-dev libqt5x11extras5-dev qtscript5-dev liblua5.1-0-dev#\\
-	\verb#bison re2c libcanberra-gtk-module:i386#	
+	\verb#libcapnp-dev libqt5x11extras5-dev qtscript5-dev libqt5webkit5-dev liblua5.1-0-dev#\\
+	\verb#bison re2c libcanberra-gtk-module:i386 libsfml-dev#	
 	\item[3. Install ZMQ] Execute the following lines in a terminal:\\
 \verb#sudo su#\\
 \verb#echo "deb http://download.opensuse.org/repositories/network:/#\\\verb#   messaging:/zeromq:/git-draft/xUbuntu_18.04/ ./" >> /etc#\\\verb#   /apt/sources.list#\\
@@ -46,26 +46,31 @@ The development environment recommended to develop software in this book is the 
 \verb#sudo apt update#\\
 \verb#sudo apt install libzmq3-dev#
 	\item[4. Install Clingo] Clone the \href{https://github.com/potassco/clingo}{Clingo Repository} and follow their installation instructions:\\
-		\verb#cd#\\
-		\verb#git clone https://github.com/potassco/clingo#\\
-  	\verb#cd clingo#\\
-  	\verb#git submodule update --init --recursive#\\
-		\verb#mkdir build#\\
-  	\verb#cmake --build build --target install#\\
-  	\verb#cd build#\\
-  	\verb#cmake ..#\\
-  	\verb#make#\\
-  	\verb#sudo make install#\\
-	\item[5. Install ROS Desktop Full] The currently used ROS version is ROS Melodic Morenia with all available updates installed. Like Ubuntu 18.04 it is also a long-term support version. The instructions for installing ROS under Ubuntu can be found on the corresponding \href{http://wiki.ros.org/melodic/Installation/Ubuntu}{ROS Wikipage}.
-	\item[6. Install ROS - Extra Packages] Simply install the package with the following command: \verb#sudo apt install ros-melodic-costmap-2d ros-melodic-urg-node #\\\verb#ros-melodic-base-local-planner ros-melodic-nav-core#\\\verb#ros-melodic-kobuki-msgs ros-melodic-joy ros-melodic-ar-track-alvar#\\\verb#ros-melodic-move-base-msgs ros-melodic-sound-play#\\\verb#ros-melodic-ecl-geometry ros-melodic-kobuki-dock-drive#\\\verb#python-catkin-tools#
-	\item[7. Create ROS Workspace] We recommend to follow this folder structure, as things can get complicated otherwise. 
+\verb#cd#\\
+\verb#git clone https://github.com/potassco/clingo#\\
+\verb#cd clingo#\\
+\verb#git submodule update --init --recursive#\\
+\verb#mkdir build#\\
+\verb#cd build#\\
+\verb#cmake ..#\\
+\verb#make#\\
+\verb#sudo make install#\\
+	\item[5. Install tmxparser] Clone the \href{git@github.com:dasys-lab/tmxparser.git}{TMX Parser Repo} and follow their installation instructions:\\
+\verb#mkdir build#
+\verb#cd build#
+\verb#sudo cmake .. -DBUILD_TINYXML2=on#
+\verb#sudo make#
+\verb#sudo make install#
+	\item[6. Install ROS Desktop Full] The currently used ROS version is ROS Melodic Morenia with all available updates installed. Like Ubuntu 18.04 it is also a long-term support version. The instructions for installing ROS under Ubuntu can be found on the corresponding \href{http://wiki.ros.org/melodic/Installation/Ubuntu}{ROS Wikipage}.
+	\item[7. Install ROS - Extra Packages] Simply install the package with the following command: \verb#sudo apt install python-catkin-tools#
+	\item[8. Create ROS Workspace] We recommend to follow this folder structure, as things can get complicated otherwise. 
 	\begin{itemize}
 		\item \verb#cd#
 		\item \verb#mkdir -p rosws/src#
 		\item \verb#cd rosws#
 		\item \verb#catkin init#
 	\end{itemize}
-	\item[8. Checkout Github Repositories] You need access to our GIT repositories on GITHub. Therefore, please provide your GITHub Username to us. We will grant you the corresponding permissions. Furthermore, it is recommended to setup ssh access to your GITHub account, in order to avoid typing the passwords over and over again:
+	\item[9. Checkout Github Repositories] You need access to our GIT repositories on GITHub. Therefore, please provide your GITHub Username to us. We will grant you the corresponding permissions. Furthermore, it is recommended to setup ssh access to your GITHub account, in order to avoid typing the passwords over and over again:
 	\begin{itemize}
 		\item \verb#ssh-keygen# followed by pressing enter until the command terminates. ;-)
 		\item Follow the \href{https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/}{GITHub Tutorial about adding SSH-Keys to your account}.
@@ -83,7 +88,7 @@ The development environment recommended to develop software in this book is the 
 		\item \verb#git clone git@github.com:dasys-lab/service-robot-grid-simulation.git#
 		\item \verb#git clone git@github.com:stephanopfer/confs-scripts-docs.git#
 	\end{itemize}
-	\item[9. General Configurations] You need to configure some of the installed tools:
+	\item[10. General Configurations] You need to configure some of the installed tools:
 		\begin{itemize}
 			\item \textbf{git:} Copy the '.gitconfig' file from the confs-scripts-docs/configs folder into your home folder. Open the '.gitconfig' file and replace the 'email' and the 'name' in the 'user' section.
 			\item \textbf{myrepos:} Jump into each repository and execute: \verb#mr register#
@@ -92,7 +97,7 @@ The development environment recommended to develop software in this book is the 
 			\verb#[DEFAULT]#\\
 			\verb#branch = git branch#
 		\end{itemize}
-	\item[10. Switch Repository Branches] During the lecture, we are working on the following branches of the corresponding GIT repositories:
+	\item[11. Switch Repository Branches] During the lecture, we are working on the following branches of the corresponding GIT repositories:
 	\begin{itemize}
 		\item alica - newPD
 		\item alica-supplementary - CapnZero
@@ -105,7 +110,7 @@ The development environment recommended to develop software in this book is the 
 		\item service-robot-grid-simulation - master
 	\end{itemize}
 	The main work will take place within cnc-service-robot-ai. In order to switch a branch execute\\\verb#git checkout <branch name># within the repositories root folder.
-	\item[11. Compile Workspace] Within the 'rosws/src' folder execute \verb#catkin build#.
+	\item[12. Compile Workspace] Within the 'rosws/src' folder execute \verb#catkin build#.
 \end{description}
 
 \section{Unix Basics}

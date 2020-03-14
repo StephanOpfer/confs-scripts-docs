@@ -9,20 +9,12 @@
     \begin{verbatim}
 # ROS specific 
 source /opt/ros/melodic/setup.bash
+ROS_WORKSPACE=${HOME}/rosws
+source ${ROS_WORKSPACE}/devel/setup.bash
 
-# TurtleBots
-ttbws_path=<insert your path to the ttbws folder here>
-
-source ${ttbws_path}/devel/setup.bash
-
-# ALICA/ttb_base specific stuff
-export DOMAIN_FOLDER=${ttbws_path}/src/cnc-turtlebots/
+# Alica domain specific
+export DOMAIN_FOLDER=${ROS_WORKSPACE}/src/service-robot-ai/
 export DOMAIN_CONFIG_FOLDER=${DOMAIN_FOLDER}/etc
-
-# for loading the right models (environment and robot)
-export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:${ttbws_path}/src/turtlebot/turtlebot_bringup/models
-export TURTLEBOT_STACKS=ninja-hexagons
-export TURTLEBOT_3D_SENSOR=ninja-kinect
 
 #fancy prompt that also shows the current git branch
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \[\033[01;31m\]$(__git_ps1 "[%s]")\[\033[01;34m\]\$\[\033[00m\] '
